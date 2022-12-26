@@ -126,6 +126,9 @@ service nginx start
 service php-fpm start
 service mysql-server start
 
+# Remove the content downloaded in /tmp/conf
+rm -r /tmp/conf
+
 # Execution end announcement
 echo 'The FEMP stack has been installed on this box.'
 
