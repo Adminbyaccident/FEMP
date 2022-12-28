@@ -76,6 +76,7 @@ pkg install -y mariadb106-server mariadb106-client
 
 # Add service to be fired up at boot time
 sysrc mysql_enable="YES"
+sysrc mysql_args="--bind-address=127.0.0.1"
 
 # Install MySQL connector for PHP
 pkg install -y php82-mysqli
