@@ -76,6 +76,7 @@ pkg install -y mysql80-server
 
 # Add service to be fired up at boot time
 sysrc mysql_enable="YES"
+sysrc mysql_args="--bind-address=127.0.0.1"
 
 # Install MySQL connector for PHP
 pkg install -y php82-mysqli
