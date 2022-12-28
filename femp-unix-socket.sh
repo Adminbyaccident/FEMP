@@ -78,7 +78,7 @@ pkg install -y mysql80-server
 sysrc mysql_enable="YES"
 
 # Install MySQL connector for PHP
-pkg install -y 
+pkg install -y php82-mysqli
 
 # Install the 'old fashioned' Expect to automate the mysql_secure_installation part
 pkg install -y expect
