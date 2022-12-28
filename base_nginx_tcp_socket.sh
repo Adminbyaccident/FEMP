@@ -114,6 +114,16 @@ http {
 
         ssl_ciphers  HIGH:!aNULL:!MD5;
         ssl_prefer_server_ciphers  on;
+	
+	add_header 'X-Content-Type-Options'  'nosniff';
+	add_header 'X-Frame-Options' 'sameorigin';
+	add_header 'X-XSS-Protection' '1; mode=block';
+	add_header 'Strict-Transport-Security' 'max-age=31536000; includeSubDomains; preload';
+	add_header 'Cache-control' 'no-cache';
+	# add_header 'Content-Security-Policy' "default-src 'self'; font-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src 'self'";
+	add_header 'Content-Security-Policy' "upgrade-insecure-requests";
+	add_header 'Permissions-Policy' 'camera=(), geolocation=(), microphone=()';
+	add_header 'Referrer-Policy' 'same-origin';
 
         location ~ \.php$ {
             root           /usr/local/www/nginx-dist;
