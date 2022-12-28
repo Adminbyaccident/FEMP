@@ -71,8 +71,8 @@ sed -i -e '/listen.mode/s/;listen.mode/listen.mode/' /usr/local/etc/php-fpm.d/ww
 # Enable PHP-FPM at boot time
 php_fpm_enable="YES"
 
-# Install MySQL 8.0
-pkg install -y mysql80-server
+# Install MariaDB 10.6 LTS
+pkg install -y mariadb106-server mariadb106-client
 
 # Add service to be fired up at boot time
 sysrc mysql_enable="YES"
