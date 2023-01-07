@@ -78,6 +78,9 @@ pkg install -y mariadb106-server mariadb106-client
 sysrc mysql_enable="YES"
 sysrc mysql_args="--bind-address=127.0.0.1"
 
+# Start MariaDB
+service mysql-server start
+
 # Install MySQL connector for PHP
 pkg install -y php82-mysqli
 
@@ -110,7 +113,6 @@ echo "$SECURE_MARIADB"
 # Start services
 service nginx start
 service php-fpm start
-service mysql-server start
 
 # Remove the content downloaded in /tmp/conf
 rm -r /tmp/conf
