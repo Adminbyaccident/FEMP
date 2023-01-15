@@ -47,7 +47,7 @@ http {
         #access_log  logs/host.access.log  main;
 
         location / {
-            root   /usr/local/www/nginx-dist;
+            root   /usr/local/www/sites;
             index index.php  index.html index.htm;
         }
 
@@ -69,7 +69,7 @@ http {
         # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
         #
         location ~ \.php$ {
-            root           /usr/local/www/nginx-dist;
+            root           /usr/local/www/sites;
             fastcgi_pass   127.0.0.1:9000;
             fastcgi_index  index.php;
 #            fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
@@ -126,7 +126,7 @@ http {
 	add_header 'Referrer-Policy' 'same-origin';
 
         location ~ \.php$ {
-            root           /usr/local/www/nginx-dist;
+            root           /usr/local/www/sites;
             fastcgi_pass   127.0.0.1:9000;
             fastcgi_index  index.php;
 #            fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;			
@@ -134,7 +134,7 @@ http {
             include        fastcgi_params;
         }
         location / {
-            root   /usr/local/www/nginx;
+            root   /usr/local/www/sites;
             index  index.php index.html index.htm;
         }
 
