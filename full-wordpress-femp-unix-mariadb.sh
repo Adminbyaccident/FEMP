@@ -217,6 +217,9 @@ sed -i -e 's/username_here/'"$USER_NAME"'/g' /root/wordpress/wp-config.php
 PASSWORD=$(cat /root/newdb_pwd.txt) && export PASSWORD
 sed -i -e 's/password_here/'"$PASSWORD"'/g' /root/wordpress/wp-config.php
 
+# Add the socket where MariaDB is running
+sed -i -e 's/localhost/localhost:\/var\/run\/mysql\/mysql.sock/g' /root/wordpress/wp-config.php
+
 # Move the content of the wordpress file into the DocumentRoot path
 cp -r /root/wordpress/* /usr/local/www/nginx-dist/
 
