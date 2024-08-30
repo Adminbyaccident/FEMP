@@ -62,11 +62,6 @@ cp /usr/local/etc/php.ini-production /usr/local/etc/php.ini
 # Avoid PHP's information (version, etc) being disclosed
 sed -i -e '/expose_php/s/expose_php = On/expose_php = Off/' /usr/local/etc/php.ini
 
-# Configure PHP-FPM
-sed -i -e '/listen.owner/s/;listen.owner/listen.owner/' /usr/local/etc/php-fpm.d/www.conf
-sed -i -e '/listen.group/s/;listen.group/listen.group/' /usr/local/etc/php-fpm.d/www.conf
-sed -i -e '/listen.mode/s/;listen.mode/listen.mode/' /usr/local/etc/php-fpm.d/www.conf
-
 # Enable PHP-FPM at boot time
 php_fpm_enable="YES"
 
