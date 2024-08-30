@@ -69,7 +69,7 @@ sed -i -e '/listen.group/s/;listen.group/listen.group/' /usr/local/etc/php-fpm.d
 sed -i -e '/listen.mode/s/;listen.mode/listen.mode/' /usr/local/etc/php-fpm.d/www.conf
 
 # Enable PHP-FPM at boot time
-php_fpm_enable="YES"
+sysrc php_fpm_enable="YES"
 
 # Install MariaDB 10.6 LTS
 pkg install -y mariadb106-server mariadb106-client
