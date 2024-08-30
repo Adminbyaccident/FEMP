@@ -68,7 +68,7 @@ sed -i -e '/listen.group/s/;listen.group/listen.group/' /usr/local/etc/php-fpm.d
 sed -i -e '/listen.mode/s/;listen.mode/listen.mode/' /usr/local/etc/php-fpm.d/www.conf
 
 # Enable PHP-FPM at boot time
-php_fpm_enable="YES"
+sysrc php_fpm_enable="YES"
 
 # Install MySQL 8.0
 pkg install -y mysql80-server
