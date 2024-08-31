@@ -129,7 +129,7 @@ chmod 400 /root/db_root_pwd.txt
 # Start services
 service nginx start
 service php-fpm start
-service mysql-server start
+service mysql-server restart
 
 # Remove the content downloaded in /tmp/conf
 rm -r /tmp/conf
