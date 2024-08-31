@@ -229,7 +229,6 @@ cp -r /root/wordpress/* /usr/local/www/sites/
 chown -R www:www /usr/local/www/sites/
 
 # No one but root can read these files. Read only permissions.
-chmod 400 /root/db_root_pwd.txt
 chmod 400 /root/new_db_name.txt
 chmod 400 /root/new_db_user_name.txt
 chmod 400 /root/newdb_pwd.txt
