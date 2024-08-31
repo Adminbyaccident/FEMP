@@ -88,6 +88,9 @@ pkg install -y expect
 # Make the hideous 'safe' install for MySQL
 pkg install -y pwgen
 
+# Start MySQL service, otherwise the mysql_secure_installation will fail
+service mysql-server start
+
 DB_ROOT_PASSWORD=$(pwgen 32 --secure --numerals --capitalize) && export DB_ROOT_PASSWORD && echo $DB_ROOT_PASSWORD >> /root/db_root_pwd.txt
 
 SECURE_MYSQL=$(expect -c "
