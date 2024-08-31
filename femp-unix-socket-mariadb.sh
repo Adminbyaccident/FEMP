@@ -113,7 +113,7 @@ echo "$SECURE_MARIADB"
 # Start services
 service nginx start
 service php-fpm start
-service mysql-server start
+service mysql-server restart
 
 # Remove the content downloaded in /tmp/conf
 rm -r /tmp/conf
