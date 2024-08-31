@@ -78,6 +78,9 @@ pkg install -y php82-mysqli
 # Install the 'old fashioned' Expect to automate the mysql_secure_installation part
 pkg install -y expect
 
+# Start MySQL service, otherwise the mysql_secure_installation will fail
+service mysql-server start
+
 # Make the 'safe' install for MariaDB
 echo "Performing MariaDB secure install"
 
