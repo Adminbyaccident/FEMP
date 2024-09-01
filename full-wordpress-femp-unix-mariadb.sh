@@ -219,14 +219,11 @@ sed -i -e 's/password_here/'"$PASSWORD"'/g' /root/wordpress/wp-config.php
 # Add the socket where MariaDB is running
 sed -i -e 's/localhost/localhost:\/var\/run\/mysql\/mysql.sock/g' /root/wordpress/wp-config.php
 
-# Create a directory for the WordPress site
-mkdir /usr/local/www/sites
-
 # Move the content of the wordpress file into the DocumentRoot path
-cp -r /root/wordpress/* /usr/local/www/sites/
+cp -r /root/wordpress/* /usr/local/www/nginx
 
 # Change the ownership of the DocumentRoot path content from root to the Apache HTTP user (named www)
-chown -R www:www /usr/local/www/sites/
+chown -R www:www /usr/local/www/nginx
 
 # No one but root can read these files. Read only permissions.
 chmod 400 /root/new_db_name.txt
