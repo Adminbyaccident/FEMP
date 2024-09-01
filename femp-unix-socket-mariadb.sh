@@ -118,12 +118,6 @@ service mysql-server restart
 # Remove the content downloaded in /tmp/conf
 rm -r /tmp/conf
 
-# Set an index.html file in the DocumentRoot path
-touch /usr/local/www/sites/index.html
-echo "
-<h1> It works on NGINX! </h1>
-" >> /usr/local/www/sites/index.html
-
 # Execution end announcement
 echo 'The FEMP stack has been installed on this box.'
 
