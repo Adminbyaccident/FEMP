@@ -51,7 +51,7 @@ git clone https://github.com/Adminbyaccident/FEMP.git /tmp/conf
 rm /usr/local/etc/nginx/nginx.conf
 touch /usr/local/etc/nginx/nginx.conf
 
-cp /tmp/conf/base_nginx.conf /usr/local/etc/nginx/nginx.conf
+cp /tmp/conf/base_nginx_with-tls.conf /usr/local/etc/nginx/nginx.conf
 
 # Install PHP 8.2
 pkg install -y php82 php82-extensions
