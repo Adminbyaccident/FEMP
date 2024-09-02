@@ -426,7 +426,7 @@ install_web_server() {
 
         service apache24 start
      
-    elif [ "$webserver_choice" -eq 2 ]; then
+    elif [ "$apache_installed" = false ] && [ "$nginx_installed" = false ] && [ "$webserver_choice" -eq 2 ]; then
         echo "Installing NGINX..."
 		pkg install -y nginx
 		sysrc nginx_enable="YES"
@@ -441,6 +441,8 @@ config_nginx_php-fpm() {
 		return 0
 	elif [ "$nginx_installed" = true ]; then
 		return 0
+	elif [ "$webserver_choice" -eq 1 ]; then
+		return 0  	
     elif [ "$webserver_choice" -eq 2 ]; then
 		if [ "$nginx_socket_choice" -eq 1 ]; then
 			mv /usr/local/etc/nginx/nginx.conf /usr/local/etc/nginx/nginx.orig
@@ -650,7 +652,7 @@ config_apache_http_plus_php() {
 			</FilesMatch>
 		</IfModule>" >> /usr/local/etc/apache24/modules.d/001_mod-php.conf
 		# Start services
-		service apache24 start
+		service apache24 restart
 	elif [ "$apache_mpm_choice" -eq 2 ]; then
 		#Install PHP extensions
 		pkg install -y php${php_version}-extensions
@@ -674,9 +676,10 @@ config_apache_http_plus_php() {
 				sed -i -e 's/127.0.0.1:9000/\/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/www.conf
 				sed -i -e 's/;listen.owner/listen.owner/g' /usr/local/etc/php-fpm.d/www.conf
 				sed -i -e 's/;listen.group/listen.group/g' /usr/local/etc/php-fpm.d/www.conf
+    				sed -i -e 's/;listen.mode/listen.mode/g' /usr/local/etc/php-fpm.d/www.conf
 				# Start services
 				service apache24 restart
-				service php_fpm start
+				service php_fpm restart
 					
 			elif [ "$apache_socket_choice" -eq 2 ]; then
 				# Configure Apache HTTP to interact with PHP-FPM using a TCP socket
@@ -721,6 +724,7 @@ config_apache_http_plus_php() {
 				sed -i -e 's/127.0.0.1:9000/\/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/www.conf
 				sed -i -e 's/;listen.owner/listen.owner/g' /usr/local/etc/php-fpm.d/www.conf
 				sed -i -e 's/;listen.group/listen.group/g' /usr/local/etc/php-fpm.d/www.conf
+    				sed -i -e 's/;listen.mode/listen.mode/g' /usr/local/etc/php-fpm.d/www.conf
 				# Start services
 				service apache24 restart
 				service php-fpm start
